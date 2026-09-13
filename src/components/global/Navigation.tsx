@@ -115,14 +115,14 @@ export default function Navigation() {
         className={cn(
           'fixed top-0 left-0 right-0 z-40',
           'flex items-center justify-between',
-          'px-6 lg:px-10 py-4',
-          'border-b border-[rgba(255,253,240,0.06)]',
-          'transition-[backdrop-filter,background-color] duration-300'
+          'px-5 sm:px-6 lg:px-10 py-3.5 md:py-4',
+          'border-b border-[rgba(255,253,240,0.08)] shadow-[0_14px_40px_rgba(0,0,0,0.16)]',
+          'transition-[backdrop-filter,background-color,box-shadow] duration-300'
         )}
         style={{
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          backgroundColor: 'rgba(0, 12, 34, 0.82)',
+          backgroundColor: 'rgba(0, 12, 34, 0.72)',
         }}
       >
         {/* Logo / Wordmark */}

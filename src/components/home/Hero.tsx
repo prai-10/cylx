@@ -76,12 +76,12 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[92vh] md:min-h-screen w-full flex flex-col justify-end overflow-hidden pb-16 md:pb-24 px-6 md:px-12 lg:px-16"
+      className="relative min-h-[760px] md:min-h-[calc(100vh-1px)] w-full flex items-center overflow-hidden px-6 py-28 md:px-12 md:py-32 lg:px-16"
       data-cursor="explore"
     >
-      {/* 3D Canvas — absolute behind everything */}
+      {/* 3D Canvas — contained atmospheric layer */}
       {!prefersReduced && (
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-y-20 right-[-12%] z-0 pointer-events-none w-[78%] md:w-[62%] opacity-90">
           <Scene
             mouse={mouse}
             scrollProgress={scrollProgress}
@@ -93,20 +93,28 @@ export default function Hero() {
       {/* Reduced motion fallback */}
       {prefersReduced && (
         <div
-          className="absolute inset-0 z-0 pointer-events-none"
+          className="absolute inset-y-20 right-[-12%] z-0 pointer-events-none w-[78%] md:w-[62%]"
           style={{
             background: 'radial-gradient(ellipse at 50% 40%, #071e4a 0%, #000c22 75%)',
           }}
         />
       )}
 
-      {/* Subtle depth vignette */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-[#000c22] via-transparent to-transparent opacity-80" />
+      {/* Grid, glow and depth layers */}
+      <div className="absolute inset-0 z-0 pointer-events-none hero-grid opacity-60" />
+      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_76%_42%,rgba(16,42,113,0.35),transparent_34%),linear-gradient(90deg,#000c22_0%,rgba(0,12,34,0.92)_35%,rgba(0,12,34,0.2)_75%,#000c22_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-48 z-0 pointer-events-none bg-gradient-to-t from-[#000c22] to-transparent" />
+
+      <div className="absolute top-28 right-6 md:right-12 z-10 hidden md:flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-[#798fae]">
+        <span className="h-px w-10 bg-[#F5C400]" />
+        <span>Live growth system / 01</span>
+      </div>
 
       {/* Text Content */}
-      <div ref={contentRef} className="relative z-10 max-w-6xl mt-auto">
+      <div ref={contentRef} className="relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.65fr)] gap-10 lg:gap-20 items-end">
+        <div>
         {/* Brand Positioning Tag */}
-        <div className="hero-anim-item inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#001840]/70 backdrop-blur-md rounded-full border border-[rgba(255,253,240,0.1)] mb-6">
+        <div className="hero-anim-item inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#001840]/80 backdrop-blur-md rounded-full border border-[rgba(255,253,240,0.14)] mb-7 shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
           <span className="w-2 h-2 rounded-full bg-[#F5C400] animate-pulse" />
           <span className="text-xs font-mono tracking-widest uppercase text-[#FFFDF0]">
             Performance marketing · Creator ads · Web
@@ -114,7 +122,7 @@ export default function Hero() {
         </div>
 
         {/* Client Approved Primary Headline */}
-        <h1 className="hero-anim-item text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.2rem] font-black text-[#FFFDF0] tracking-tight leading-[0.94] mb-8">
+        <h1 className="hero-anim-item text-5xl sm:text-7xl md:text-8xl lg:text-[5.8rem] xl:text-[6.5rem] font-black text-[#FFFDF0] tracking-[-0.055em] leading-[0.9] mb-8 max-w-5xl">
           We turn organic clips into{' '}
           <span className="text-[#F5C400] relative inline-block">
             scaled ad accounts.
@@ -122,7 +130,7 @@ export default function Hero() {
         </h1>
 
         {/* Narrative Progression Ribbon (Organic -> Whitelist -> Performance -> Scale) */}
-        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-[11px] font-mono uppercase tracking-widest text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none">
+        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.14em] text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none whitespace-nowrap">
           <span className="text-[#F5C400] font-bold">01 Organic Clip</span>
           <span className="text-[rgba(255,253,240,0.2)]">→</span>
           <span className="text-[#FFFDF0]">02 Whitelisted Rights</span>
@@ -145,6 +153,29 @@ export default function Hero() {
           <Button href="/portfolio" variant="outline" size="lg" className="border-[rgba(255,253,240,0.2)] hover:border-[#FFFDF0]">
             Watch showreel
           </Button>
+        </div>
+        </div>
+
+        <div className="hero-anim-item hidden lg:flex flex-col gap-5 pb-2">
+          <div className="ml-auto w-full max-w-sm rounded-[2rem] border border-white/10 bg-[#041436]/55 backdrop-blur-xl p-6 shadow-2xl shadow-black/20">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 text-[10px] font-mono uppercase tracking-[0.18em] text-[#798fae]">
+              <span>Conversion index</span>
+              <span className="text-[#F5C400]">+34.8%</span>
+            </div>
+            <div className="flex items-end gap-2 pt-7 h-28">
+              {[28, 42, 35, 58, 52, 76, 68, 92].map((height, index) => (
+                <span key={index} className="flex-1 rounded-t-sm bg-gradient-to-t from-[#102A71] to-[#F5C400] opacity-80" style={{ height: `${height}%` }} />
+              ))}
+            </div>
+            <div className="flex items-center justify-between pt-5 text-xs text-[#cbd5e1]">
+              <span>Organic signal</span>
+              <span className="font-mono text-[#FFFDF0]">→ scaled media</span>
+            </div>
+          </div>
+          <div className="ml-auto flex max-w-sm items-center gap-3 text-xs leading-relaxed text-[#798fae]">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#F5C400] shadow-[0_0_18px_#F5C400]" />
+            <span>Creator-native creative, connected to the numbers that matter.</span>
+          </div>
         </div>
       </div>
 
