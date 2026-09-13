@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { PROJECTS, getAllProjectSlugs } from '@/lib/data/projects';
+import { getAllProjectSlugs } from '@/lib/data/projects';
 import { getCmsProjectBySlug, getCmsProjects } from '@/lib/cms/data';
 import { Button } from '@/components/ui/Button';
 
@@ -100,7 +100,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioSlugProps
       </div>
 
       {/* Hero Visual Card */}
-      <div 
+      <div
         data-cursor="explore"
         className="w-full aspect-[21/9] min-h-[300px] bg-[#001840] rounded-3xl border border-[rgba(255,253,240,0.12)] flex flex-col items-center justify-center p-8 text-center mb-16 relative overflow-hidden group"
       >
@@ -168,8 +168,8 @@ export default async function PortfolioDetailPage({ params }: PortfolioSlugProps
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {project.gallery.map((g, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               data-cursor="view"
               className="p-8 rounded-2xl bg-[#001840]/60 border border-[rgba(255,253,240,0.1)] hover:border-[#F5C400]/40 transition-colors"
             >

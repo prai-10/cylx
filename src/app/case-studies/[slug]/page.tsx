@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { CASE_STUDIES, getAllCaseStudySlugs } from '@/lib/data/caseStudies';
+import { getAllCaseStudySlugs } from '@/lib/data/caseStudies';
 import { getCmsCaseStudyBySlug, getCmsCaseStudies } from '@/lib/cms/data';
 import { Button } from '@/components/ui/Button';
+
+
 
 interface CaseStudySlugProps {
   params: Promise<{ slug: string }>;

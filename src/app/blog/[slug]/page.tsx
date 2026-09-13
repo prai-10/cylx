@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { BLOG_POSTS, getAllBlogPostSlugs } from '@/lib/data/blog';
+import { getAllBlogPostSlugs } from '@/lib/data/blog';
 import { getCmsBlogPostBySlug } from '@/lib/cms/data';
 import { Button } from '@/components/ui/Button';
 

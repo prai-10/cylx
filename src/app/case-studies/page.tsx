@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { getCmsCaseStudies } from '@/lib/cms/data';
 import { Button } from '@/components/ui/Button';
 
@@ -38,7 +37,7 @@ export default async function CaseStudiesPage() {
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <span className="text-xs font-mono text-[#F5C400] px-3 py-1 rounded-full bg-[#000c22] border border-[rgba(255,253,240,0.1)]">
-                    0{idx + 1} // {study.category}
+                    0{idx + 1} {"//"} {study.category}
                   </span>
                   <span className="text-xs font-mono text-[#9aaecf]">
                     Client: {study.client}

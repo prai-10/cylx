@@ -1,4 +1,4 @@
-import { CaseStudy, ProjectCategory } from '@/types';
+import { CaseStudy } from '@/types';
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
