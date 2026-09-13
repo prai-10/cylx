@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CLYX MEDIA — Design System
+   Monochrome-first. Accent-ready. Editorial.
+   ============================================================ */
+
+:root {
+  /* ============================================================
+     CLYX BRAND PALETTE (Official)
+     Deep Navy: #001840 | Royal Blue: #102A71
+     Primary Yellow: #F5C400 | Light Yellow: #FFDC5F
+     Warm White: #FFFDF0
+     ============================================================ */
+  --color-bg: #000c22;
+  --color-bg-deep: #000818;
+  --color-bg-elevated: #001840;
+  --color-bg-subtle: #071e4a;
+  --color-surface: #041436;
+
+  --color-text: #FFFDF0;
+  --color-text-muted: #cbd5e1;
+  --color-text-dim: #798fae;
+
+  --color-border: rgba(255, 253, 240, 0.08);
+  --color-border-hover: rgba(245, 196, 0, 0.35);
+
+  /* Clyx Brand Accents */
+  --color-accent: #F5C400;
+  --color-accent-light: #FFDC5F;
+  --color-blue: #102A71;
+  --color-blue-subtle: rgba(16, 42, 113, 0.3);
+
+  /* Overlay */
+  --color-overlay: rgba(0, 12, 34, 0.94);
+
+  /* Easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+  --duration-slower: 1000ms;
+
+  /* Typography scale — fluid, editorial */
+  --text-display: clamp(3.2rem, 7.5vw, 8.5rem);
+  --text-heading-1: clamp(2.4rem, 4.5vw, 5rem);
+  --text-heading-2: clamp(1.6rem, 2.8vw, 3rem);
+  --text-body: clamp(0.95rem, 1.1vw, 1.15rem);
+  --text-caption: 0.85rem;
+  --text-nav-prompt: clamp(0.8rem, 1vw, 0.95rem);
+}
+
+/* Tailwind v4 theme extension */
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-satoshi);
+}
+
+/* ============================================================
+   Base Reset & Globals
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  /* Lenis controls scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-satoshi), system-ui, -apple-system, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+::-moz-selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ============================================================
+   Scrollbar — Hidden (Lenis handles UX)
+   ============================================================ */
+
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   Typography Utilities
+   ============================================================ */
+
+.text-display {
+  font-size: var(--text-display);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.text-heading-1 {
+  font-size: var(--text-heading-1);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.0;
+}
+
+.text-heading-2 {
+  font-size: var(--text-heading-2);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.text-nav-prompt {
+  font-size: var(--text-nav-prompt);
+  font-weight: 400;
+  letter-spacing: 0em;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Link Reset
+   ============================================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================
+   Focus Visible (Accessibility)
+   ============================================================ */
+
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
