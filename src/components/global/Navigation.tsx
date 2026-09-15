@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { PRIMARY_NAV_LINKS, ALL_NAV_LINKS } from '@/lib/registry';
 import { NavigationPrompt } from './NavigationPrompt';
 import { Button } from '@/components/ui/Button';
+import { MagneticButton } from '@/components/ui/MagneticButton';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 export default function Navigation() {
@@ -135,7 +137,7 @@ export default function Navigation() {
         </Link>
 
         {/* Desktop Links (Streamlined 4 Links) */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {PRIMARY_NAV_LINKS.map((link) => {
             const isActive = link.href === '/'
               ? pathname === '/'
@@ -146,12 +148,19 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-xs font-semibold uppercase tracking-wider transition-all duration-150 py-1',
+                  'relative text-xs font-semibold uppercase tracking-wider transition-colors duration-150 px-4 py-2 rounded-full',
                   isActive
                     ? 'text-[#F5C400]'
                     : 'text-[#cbd5e1]/80 hover:text-[#FFFDF0]'
                 )}
               >
+                {isActive && (
+                  <motion.div
+                    layoutId="desktopNavActivePill"
+                    className="absolute inset-0 bg-[#001840] border border-[#F5C400]/40 rounded-full -z-10"
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
                 {link.label}
               </Link>
             );
@@ -174,9 +183,11 @@ export default function Navigation() {
           </button>
 
           {/* Primary CTA */}
-          <Button href="/contact" variant="primary" size="sm">
-            Start a project
-          </Button>
+          <MagneticButton distance={0.2}>
+            <Button href="/contact" variant="primary" size="sm">
+              Start a project
+            </Button>
+          </MagneticButton>
         </div>
 
         {/* Mobile controls */}

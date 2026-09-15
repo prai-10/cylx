@@ -6,6 +6,7 @@ import { WorkShowcase } from '@/components/home/WorkShowcase';
 import { TeamSection } from '@/components/home/TeamSection';
 import { ClientResultsSection } from '@/components/home/ClientResultsSection';
 import { BlogPreview } from '@/components/home/BlogPreview';
+import { AgencyFAQ } from '@/components/home/AgencyFAQ';
 import { FinalCTA } from '@/components/home/FinalCTA';
 
 export default function HomePage() {
@@ -32,11 +33,15 @@ export default function HomePage() {
       {/* 7. CLIENT RESULTS */}
       <ClientResultsSection />
 
-      {/* 8. BLOG */}
+      {/* 8. FAQ */}
+      <AgencyFAQ />
+
+      {/* 9. BLOG */}
       <BlogPreview />
 
-      {/* 9. FINAL CTA */}
+      {/* 10. FINAL CTA */}
       <FinalCTA />
     </main>
   );
 }
+

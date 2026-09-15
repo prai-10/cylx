@@ -2,14 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS as STATIC_PROJECTS, CATEGORIES } from '@/lib/data/projects';
 import { Project, ProjectCategory } from '@/types';
 import { Button } from '@/components/ui/Button';
 import { createClient } from '@/lib/supabase/client';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export const WorkShowcase: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>(STATIC_PROJECTS);
   const [activeCategory, setActiveCategory] = useState<'All' | ProjectCategory>('All');
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
     const fetchPublished = async () => {
@@ -55,14 +58,17 @@ export const WorkShowcase: React.FC = () => {
     : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.06)] relative">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.08)] relative">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[rgba(255,253,240,0.06)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[rgba(255,253,240,0.08)] pb-8">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400] block mb-3">
-              Performance Portfolio
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+                04 / Performance Portfolio
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
               Campaigns, not concepts.
             </h2>
@@ -73,7 +79,7 @@ export const WorkShowcase: React.FC = () => {
         </div>
 
         {/* Categories Tab Bar */}
-        <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap items-center gap-2.5 mb-12">
+        <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap items-center gap-2.5 mb-14">
           {CATEGORIES.map((cat) => {
             const isSelected = activeCategory === cat;
             return (
@@ -82,81 +88,102 @@ export const WorkShowcase: React.FC = () => {
                 role="tab"
                 aria-selected={isSelected}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4.5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer flex items-center justify-center min-h-[40px] ${
+                className={`relative px-4.5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-colors cursor-pointer flex items-center justify-center min-h-[40px] ${
                   isSelected
-                    ? 'bg-[#F5C400] text-[#000c22] font-bold shadow-md shadow-[#F5C400]/25 ring-2 ring-[#F5C400]/40'
-                    : 'bg-[#001840]/80 text-[#cbd5e1] hover:text-[#FFFDF0] border border-[rgba(255,253,240,0.14)] hover:border-[#F5C400]/40 hover:bg-[#001840]'
+                    ? 'text-[#000c22]'
+                    : 'text-[#cbd5e1] hover:text-[#FFFDF0] bg-[#001840]/60 border border-[rgba(255,253,240,0.1)] hover:border-[#F5C400]/40'
                 }`}
               >
-                {cat}
+                {isSelected && (
+                  <motion.div
+                    layoutId="activeCategoryPill"
+                    className="absolute inset-0 bg-[#F5C400] rounded-full shadow-md shadow-[#F5C400]/25 -z-0"
+                    transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+                  />
+                )}
+                <span className="relative z-10 font-bold">{cat}</span>
               </button>
             );
           })}
         </div>
 
-        {/* Editorial Campaign Gallery (Asymmetric Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
-          {filteredProjects.map((project, idx) => {
-            const isWide = idx % 3 === 0;
+        {/* Editorial Campaign Gallery */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10"
+        >
+          <AnimatePresence>
+            {filteredProjects.map((project, idx) => {
+              const isWide = idx % 3 === 0;
 
-            return (
-              <Link
-                key={project.slug}
-                href={`/portfolio/${project.slug}`}
-                data-cursor="view"
-                className={`group block rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] overflow-hidden hover:border-[#F5C400]/50 transition-all duration-300 ${
-                  isWide ? 'md:col-span-12 lg:col-span-7' : 'md:col-span-6 lg:col-span-5'
-                }`}
-              >
-                {/* Visual Frame */}
-                <div className="relative aspect-[16/10] w-full bg-[#001840] flex flex-col justify-between p-6 sm:p-8 overflow-hidden group-hover:bg-[#00225c] transition-colors">
-                  <div className="flex items-center justify-between z-10">
-                    <span className="text-xs font-mono font-semibold text-[#F5C400] px-3 py-1.5 rounded-full bg-[#000c22]/90 border border-[rgba(255,253,240,0.1)]">
-                      {project.category}
-                    </span>
-                    <span className="text-xs font-mono text-[#cbd5e1]/70 bg-[#000c22]/60 px-2.5 py-1 rounded-md">
-                      {project.year}
-                    </span>
-                  </div>
+              return (
+                <motion.div
+                  layout
+                  key={project.slug}
+                  initial={{ opacity: 0, scale: prefersReduced ? 1 : 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: prefersReduced ? 1 : 0.98 }}
+                  transition={{ duration: 0.4 }}
+                  className={`${
+                    isWide ? 'md:col-span-12 lg:col-span-7' : 'md:col-span-6 lg:col-span-5'
+                  }`}
+                >
+                  <Link
+                    href={`/portfolio/${project.slug}`}
+                    data-cursor="view"
+                    className="group block rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] overflow-hidden hover:border-[#F5C400]/60 transition-all duration-300 h-full flex flex-col justify-between"
+                  >
+                    {/* Visual Frame */}
+                    <div className="relative aspect-[16/10] w-full bg-[#001840]/90 flex flex-col justify-between p-6 sm:p-8 overflow-hidden group-hover:bg-[#00225c]/80 transition-colors">
+                      <div className="flex items-center justify-between z-10">
+                        <span className="text-xs font-mono font-semibold text-[#F5C400] px-3 py-1.5 rounded-full bg-[#000c22]/90 border border-[rgba(255,253,240,0.1)]">
+                          {project.category}
+                        </span>
+                        <span className="text-xs font-mono text-[#cbd5e1]/80 bg-[#000c22]/70 px-2.5 py-1 rounded-md">
+                          {project.year}
+                        </span>
+                      </div>
 
-                  <div className="z-10 my-auto py-4">
-                    <span className="text-xs uppercase tracking-widest text-[#F5C400] font-mono block mb-1.5 font-bold">
-                      {project.client}
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors leading-tight">
-                      {project.title}
-                    </h3>
-                  </div>
+                      <div className="z-10 my-auto py-4">
+                        <span className="text-xs uppercase tracking-widest text-[#F5C400] font-mono block mb-1.5 font-bold">
+                          {project.client}
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors leading-tight">
+                          {project.title}
+                        </h3>
+                      </div>
 
-                  <div className="flex items-center justify-between text-xs text-[#cbd5e1] z-10 border-t border-[rgba(255,253,240,0.08)] pt-3.5">
-                    <span className="font-mono text-xs text-[#798fae]">{project.services[0]}</span>
-                    <span className="text-[#F5C400] group-hover:translate-x-1.5 transition-transform font-bold font-mono inline-flex items-center gap-1">
-                      <span>View Case Study</span>
-                      <span aria-hidden="true">→</span>
-                    </span>
-                  </div>
-                </div>
+                      <div className="flex items-center justify-between text-xs text-[#cbd5e1] z-10 border-t border-[rgba(255,253,240,0.08)] pt-3.5">
+                        <span className="font-mono text-xs text-[#798fae]">{project.services[0]}</span>
+                        <span className="text-[#F5C400] group-hover:translate-x-1.5 transition-transform font-bold font-mono inline-flex items-center gap-1">
+                          <span>View Case Study</span>
+                          <span aria-hidden="true">→</span>
+                        </span>
+                      </div>
+                    </div>
 
-                {/* Structured Meta Info (Cleanly Separated Below Preview) */}
-                <div className="p-6 lg:p-7 border-t border-[rgba(255,253,240,0.06)] bg-[#000c22]/40">
-                  <p className="text-xs sm:text-sm text-[#cbd5e1]/80 leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.services.map((s) => (
-                      <span
-                        key={s}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#000c22] text-[#cbd5e1] border border-[rgba(255,253,240,0.08)]"
-                      >
-                        {s}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+                    {/* Structured Meta Info */}
+                    <div className="p-6 lg:p-7 border-t border-[rgba(255,253,240,0.06)] bg-[#000c22]/50">
+                      <p className="text-xs sm:text-sm text-[#cbd5e1]/80 leading-relaxed mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.services.map((s) => (
+                          <span
+                            key={s}
+                            className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#000c22] text-[#cbd5e1] border border-[rgba(255,253,240,0.08)]"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

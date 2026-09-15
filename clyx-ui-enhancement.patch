@@ -1,0 +1,172 @@
+[1mdiff --git a/src/app/globals.css b/src/app/globals.css[m
+[1mindex 14c302d..3fd7b8d 100644[m
+[1m--- a/src/app/globals.css[m
+[1m+++ b/src/app/globals.css[m
+[36m@@ -193,4 +193,40 @@[m [ma {[m
+     transition-duration: 0.01ms !important;[m
+     scroll-behavior: auto !important;[m
+   }[m
+[31m-}[m
+\ No newline at end of file[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m/* ============================================================[m
+[32m+[m[32m   Premium surface language and atmospheric utilities[m
+[32m+[m[32m   ============================================================ */[m
+[32m+[m
+[32m+[m[32mbody {[m
+[32m+[m[32m  background:[m
+[32m+[m[32m    radial-gradient(circle at 78% 8%, rgba(16, 42, 113, 0.18), transparent 28rem),[m
+[32m+[m[32m    var(--color-bg);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m::selection {[m
+[32m+[m[32m  background: var(--color-accent);[m
+[32m+[m[32m  color: var(--color-bg-deep);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.hero-grid {[m
+[32m+[m[32m  background-image:[m
+[32m+[m[32m    linear-gradient(rgba(255, 253, 240, 0.045) 1px, transparent 1px),[m
+[32m+[m[32m    linear-gradient(90deg, rgba(255, 253, 240, 0.045) 1px, transparent 1px);[m
+[32m+[m[32m  background-size: 72px 72px;[m
+[32m+[m[32m  mask-image: linear-gradient(90deg, black 0%, rgba(0, 0, 0, 0.75) 45%, transparent 92%);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.surface-line {[m
+[32m+[m[32m  border-color: rgba(255, 253, 240, 0.1);[m
+[32m+[m[32m  background: linear-gradient(135deg, rgba(4, 20, 54, 0.72), rgba(0, 12, 34, 0.38));[m
+[32m+[m[32m  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.14);[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m@media (max-width: 767px) {[m
+[32m+[m[32m  .hero-grid {[m
+[32m+[m[32m    background-size: 48px 48px;[m
+[32m+[m[32m    mask-image: linear-gradient(180deg, black 0%, transparent 70%);[m
+[32m+[m[32m  }[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/components/global/Navigation.tsx b/src/components/global/Navigation.tsx[m
+[1mindex 261df66..6a3adf2 100644[m
+[1m--- a/src/components/global/Navigation.tsx[m
+[1m+++ b/src/components/global/Navigation.tsx[m
+[36m@@ -115,14 +115,14 @@[m [mexport default function Navigation() {[m
+         className={cn([m
+           'fixed top-0 left-0 right-0 z-40',[m
+           'flex items-center justify-between',[m
+[31m-          'px-6 lg:px-10 py-4',[m
+[31m-          'border-b border-[rgba(255,253,240,0.06)]',[m
+[31m-          'transition-[backdrop-filter,background-color] duration-300'[m
+[32m+[m[32m          'px-5 sm:px-6 lg:px-10 py-3.5 md:py-4',[m
+[32m+[m[32m          'border-b border-[rgba(255,253,240,0.08)] shadow-[0_14px_40px_rgba(0,0,0,0.16)]',[m
+[32m+[m[32m          'transition-[backdrop-filter,background-color,box-shadow] duration-300'[m
+         )}[m
+         style={{[m
+           backdropFilter: 'blur(20px)',[m
+           WebkitBackdropFilter: 'blur(20px)',[m
+[31m-          backgroundColor: 'rgba(0, 12, 34, 0.82)',[m
+[32m+[m[32m          backgroundColor: 'rgba(0, 12, 34, 0.72)',[m
+         }}[m
+       >[m
+         {/* Logo / Wordmark */}[m
+[1mdiff --git a/src/components/home/Hero.tsx b/src/components/home/Hero.tsx[m
+[1mindex 601b9b0..df6f888 100644[m
+[1m--- a/src/components/home/Hero.tsx[m
+[1m+++ b/src/components/home/Hero.tsx[m
+[36m@@ -76,12 +76,12 @@[m [mexport default function Hero() {[m
+   return ([m
+     <section[m
+       ref={sectionRef}[m
+[31m-      className="relative min-h-[92vh] md:min-h-screen w-full flex flex-col justify-end overflow-hidden pb-16 md:pb-24 px-6 md:px-12 lg:px-16"[m
+[32m+[m[32m      className="relative min-h-[760px] md:min-h-[calc(100vh-1px)] w-full flex items-center overflow-hidden px-6 py-28 md:px-12 md:py-32 lg:px-16"[m
+       data-cursor="explore"[m
+     >[m
+[31m-      {/* 3D Canvas — absolute behind everything */}[m
+[32m+[m[32m      {/* 3D Canvas — contained atmospheric layer */}[m
+       {!prefersReduced && ([m
+[31m-        <div className="absolute inset-0 z-0 pointer-events-none">[m
+[32m+[m[32m        <div className="absolute inset-y-20 right-[-12%] z-0 pointer-events-none w-[78%] md:w-[62%] opacity-90">[m
+           <Scene[m
+             mouse={mouse}[m
+             scrollProgress={scrollProgress}[m
+[36m@@ -93,20 +93,28 @@[m [mexport default function Hero() {[m
+       {/* Reduced motion fallback */}[m
+       {prefersReduced && ([m
+         <div[m
+[31m-          className="absolute inset-0 z-0 pointer-events-none"[m
+[32m+[m[32m          className="absolute inset-y-20 right-[-12%] z-0 pointer-events-none w-[78%] md:w-[62%]"[m
+           style={{[m
+             background: 'radial-gradient(ellipse at 50% 40%, #071e4a 0%, #000c22 75%)',[m
+           }}[m
+         />[m
+       )}[m
+ [m
+[31m-      {/* Subtle depth vignette */}[m
+[31m-      <div className="absolute inset-0 z-0 pointer-events-none bg-gradient-to-t from-[#000c22] via-transparent to-transparent opacity-80" />[m
+[32m+[m[32m      {/* Grid, glow and depth layers */}[m
+[32m+[m[32m      <div className="absolute inset-0 z-0 pointer-events-none hero-grid opacity-60" />[m
+[32m+[m[32m      <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_76%_42%,rgba(16,42,113,0.35),transparent_34%),linear-gradient(90deg,#000c22_0%,rgba(0,12,34,0.92)_35%,rgba(0,12,34,0.2)_75%,#000c22_100%)]" />[m
+[32m+[m[32m      <div className="absolute inset-x-0 bottom-0 h-48 z-0 pointer-events-none bg-gradient-to-t from-[#000c22] to-transparent" />[m
+[32m+[m
+[32m+[m[32m      <div className="absolute top-28 right-6 md:right-12 z-10 hidden md:flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-[#798fae]">[m
+[32m+[m[32m        <span className="h-px w-10 bg-[#F5C400]" />[m
+[32m+[m[32m        <span>Live growth system / 01</span>[m
+[32m+[m[32m      </div>[m
+ [m
+       {/* Text Content */}[m
+[31m-      <div ref={contentRef} className="relative z-10 max-w-6xl mt-auto">[m
+[32m+[m[32m      <div ref={contentRef} className="relative z-10 w-full max-w-7xl mx-auto grid lg:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.65fr)] gap-10 lg:gap-20 items-end">[m
+[32m+[m[32m        <div>[m
+         {/* Brand Positioning Tag */}[m
+[31m-        <div className="hero-anim-item inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#001840]/70 backdrop-blur-md rounded-full border border-[rgba(255,253,240,0.1)] mb-6">[m
+[32m+[m[32m        <div className="hero-anim-item inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#001840]/80 backdrop-blur-md rounded-full border border-[rgba(255,253,240,0.14)] mb-7 shadow-[0_8px_30px_rgba(0,0,0,0.18)]">[m
+           <span className="w-2 h-2 rounded-full bg-[#F5C400] animate-pulse" />[m
+           <span className="text-xs font-mono tracking-widest uppercase text-[#FFFDF0]">[m
+             Performance marketing · Creator ads · Web[m
+[36m@@ -114,7 +122,7 @@[m [mexport default function Hero() {[m
+         </div>[m
+ [m
+         {/* Client Approved Primary Headline */}[m
+[31m-        <h1 className="hero-anim-item text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.2rem] font-black text-[#FFFDF0] tracking-tight leading-[0.94] mb-8">[m
+[32m+[m[32m        <h1 className="hero-anim-item text-5xl sm:text-7xl md:text-8xl lg:text-[5.8rem] xl:text-[6.5rem] font-black text-[#FFFDF0] tracking-[-0.055em] leading-[0.9] mb-8 max-w-5xl">[m
+           We turn organic clips into{' '}[m
+           <span className="text-[#F5C400] relative inline-block">[m
+             scaled ad accounts.[m
+[36m@@ -122,7 +130,7 @@[m [mexport default function Hero() {[m
+         </h1>[m
+ [m
+         {/* Narrative Progression Ribbon (Organic -> Whitelist -> Performance -> Scale) */}[m
+[31m-        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-[11px] font-mono uppercase tracking-widest text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none">[m
+[32m+[m[32m        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.14em] text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none whitespace-nowrap">[m
+           <span className="text-[#F5C400] font-bold">01 Organic Clip</span>[m
+           <span className="text-[rgba(255,253,240,0.2)]">→</span>[m
+           <span className="text-[#FFFDF0]">02 Whitelisted Rights</span>[m
+[36m@@ -146,6 +154,29 @@[m [mexport default function Hero() {[m
+             Watch showreel[m
+           </Button>[m
+         </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m
+[32m+[m[32m        <div className="hero-anim-item hidden lg:flex flex-col gap-5 pb-2">[m
+[32m+[m[32m          <div className="ml-auto w-full max-w-sm rounded-[2rem] border border-white/10 bg-[#041436]/55 backdrop-blur-xl p-6 shadow-2xl shadow-black/20">[m
+[32m+[m[32m            <div className="flex items-center justify-between border-b border-white/10 pb-4 text-[10px] font-mono uppercase tracking-[0.18em] text-[#798fae]">[m
+[32m+[m[32m              <span>Conversion index</span>[m
+[32m+[m[32m              <span className="text-[#F5C400]">+34.8%</span>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m            <div className="flex items-end gap-2 pt-7 h-28">[m
+[32m+[m[32m              {[28, 42, 35, 58, 52, 76, 68, 92].map((height, index) => ([m
+[32m+[m[32m                <span key={index} className="flex-1 rounded-t-sm bg-gradient-to-t from-[#102A71] to-[#F5C400] opacity-80" style={{ height: `${height}%` }} />[m
+[32m+[m[32m              ))}[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m            <div className="flex items-center justify-between pt-5 text-xs text-[#cbd5e1]">[m
+[32m+[m[32m              <span>Organic signal</span>[m
+[32m+[m[32m              <span className="font-mono text-[#FFFDF0]">→ scaled media</span>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div className="ml-auto flex max-w-sm items-center gap-3 text-xs leading-relaxed text-[#798fae]">[m
+[32m+[m[32m            <span className="h-2 w-2 shrink-0 rounded-full bg-[#F5C400] shadow-[0_0_18px_#F5C400]" />[m
+[32m+[m[32m            <span>Creator-native creative, connected to the numbers that matter.</span>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+       </div>[m
+ [m
+       {/* Scroll indicator */}[m

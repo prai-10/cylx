@@ -2,13 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { CASE_STUDIES as STATIC_CASE_STUDIES } from '@/lib/data/caseStudies';
 import { CaseStudy } from '@/types';
 import { Button } from '@/components/ui/Button';
 import { createClient } from '@/lib/supabase/client';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export const ClientResultsSection: React.FC = () => {
   const [studies, setStudies] = useState<CaseStudy[]>(STATIC_CASE_STUDIES);
+  const prefersReduced = useReducedMotion();
 
   useEffect(() => {
     const fetchDynamic = async () => {
@@ -47,13 +50,16 @@ export const ClientResultsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.06)]">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.08)]">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[rgba(255,253,240,0.06)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[rgba(255,253,240,0.08)] pb-8">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400] block mb-3">
-              Performance Evidence
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+                05 / Verified Case Studies
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
               Client Results &amp; Whitelisting Data
             </h2>
@@ -64,11 +70,15 @@ export const ClientResultsSection: React.FC = () => {
         </div>
 
         {/* Editorial Case Study Blocks */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
-          {studies.map((study) => (
-            <div
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+          {studies.map((study, idx) => (
+            <motion.div
               key={study.slug}
-              className="p-8 lg:p-10 rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] flex flex-col justify-between hover:border-[#F5C400]/40 transition-all duration-300 group"
+              initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.6, delay: idx * 0.12 }}
+              className="p-8 lg:p-10 rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] flex flex-col justify-between hover:border-[#F5C400]/50 transition-all duration-300 group relative"
             >
               <div>
                 <div className="flex items-center justify-between mb-8 border-b border-[rgba(255,253,240,0.06)] pb-4">
@@ -107,12 +117,13 @@ export const ClientResultsSection: React.FC = () => {
                 </span>
                 <Link
                   href={`/case-studies/${study.slug}`}
-                  className="font-mono text-[#F5C400] group-hover:translate-x-1 transition-transform font-bold"
+                  className="font-mono text-[#F5C400] group-hover:translate-x-1 transition-transform font-bold inline-flex items-center gap-1"
                 >
-                  Read Strategy Breakdown →
+                  <span>Strategy Breakdown</span>
+                  <span>→</span>
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
