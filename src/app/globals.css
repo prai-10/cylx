@@ -45,6 +45,12 @@
   --duration-slow: 600ms;
   --duration-slower: 1000ms;
 
+  /* Radius tokens — 4-step system */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
   /* Typography scale — fluid, editorial */
   --text-display: clamp(3.2rem, 7.5vw, 8.5rem);
   --text-heading-1: clamp(2.4rem, 4.5vw, 5rem);
@@ -59,6 +65,11 @@
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
   --font-sans: var(--font-satoshi);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-full: var(--radius-full);
 }
 
 /* ============================================================

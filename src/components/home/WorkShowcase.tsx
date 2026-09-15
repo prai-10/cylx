@@ -73,24 +73,29 @@ export const WorkShowcase: React.FC = () => {
         </div>
 
         {/* Categories Tab Bar */}
-        <div className="flex flex-wrap items-center gap-2 mb-16">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer ${
-                activeCategory === cat
-                  ? 'bg-[#F5C400] text-[#000c22] font-bold shadow-md shadow-[#F5C400]/20'
-                  : 'bg-[#001840]/60 text-[#cbd5e1] hover:text-[#FFFDF0] border border-[rgba(255,253,240,0.08)]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap items-center gap-2.5 mb-12">
+          {CATEGORIES.map((cat) => {
+            const isSelected = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4.5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all cursor-pointer flex items-center justify-center min-h-[40px] ${
+                  isSelected
+                    ? 'bg-[#F5C400] text-[#000c22] font-bold shadow-md shadow-[#F5C400]/25 ring-2 ring-[#F5C400]/40'
+                    : 'bg-[#001840]/80 text-[#cbd5e1] hover:text-[#FFFDF0] border border-[rgba(255,253,240,0.14)] hover:border-[#F5C400]/40 hover:bg-[#001840]'
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
 
         {/* Editorial Campaign Gallery (Asymmetric Layout) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
           {filteredProjects.map((project, idx) => {
             const isWide = idx % 3 === 0;
 
@@ -104,43 +109,44 @@ export const WorkShowcase: React.FC = () => {
                 }`}
               >
                 {/* Visual Frame */}
-                <div className="relative aspect-[16/10] w-full bg-[#001840] flex flex-col justify-between p-8 lg:p-10 overflow-hidden group-hover:bg-[#00225c] transition-colors">
+                <div className="relative aspect-[16/10] w-full bg-[#001840] flex flex-col justify-between p-6 sm:p-8 overflow-hidden group-hover:bg-[#00225c] transition-colors">
                   <div className="flex items-center justify-between z-10">
-                    <span className="text-xs font-mono text-[#F5C400] px-3 py-1 rounded-full bg-[#000c22]/80 border border-[rgba(255,253,240,0.08)]">
+                    <span className="text-xs font-mono font-semibold text-[#F5C400] px-3 py-1.5 rounded-full bg-[#000c22]/90 border border-[rgba(255,253,240,0.1)]">
                       {project.category}
                     </span>
-                    <span className="text-xs font-mono text-[#798fae]">
+                    <span className="text-xs font-mono text-[#cbd5e1]/70 bg-[#000c22]/60 px-2.5 py-1 rounded-md">
                       {project.year}
                     </span>
                   </div>
 
-                  <div className="z-10 my-auto py-6">
-                    <span className="text-xs uppercase tracking-widest text-[#798fae] font-mono block mb-1">
+                  <div className="z-10 my-auto py-4">
+                    <span className="text-xs uppercase tracking-widest text-[#F5C400] font-mono block mb-1.5 font-bold">
                       {project.client}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors">
+                    <h3 className="text-2xl sm:text-3xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors leading-tight">
                       {project.title}
                     </h3>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs text-[#cbd5e1] z-10 border-t border-[rgba(255,253,240,0.06)] pt-4">
-                    <span className="font-mono text-[11px] text-[#798fae]">{project.services[0]}</span>
-                    <span className="text-[#F5C400] group-hover:translate-x-1.5 transition-transform font-bold font-mono">
-                      View Campaign Case Study →
+                  <div className="flex items-center justify-between text-xs text-[#cbd5e1] z-10 border-t border-[rgba(255,253,240,0.08)] pt-3.5">
+                    <span className="font-mono text-xs text-[#798fae]">{project.services[0]}</span>
+                    <span className="text-[#F5C400] group-hover:translate-x-1.5 transition-transform font-bold font-mono inline-flex items-center gap-1">
+                      <span>View Case Study</span>
+                      <span aria-hidden="true">→</span>
                     </span>
                   </div>
                 </div>
 
-                {/* Meta Description */}
-                <div className="p-6 lg:p-8">
-                  <p className="text-sm text-[#cbd5e1]/80 leading-relaxed mb-4">
+                {/* Structured Meta Info (Cleanly Separated Below Preview) */}
+                <div className="p-6 lg:p-7 border-t border-[rgba(255,253,240,0.06)] bg-[#000c22]/40">
+                  <p className="text-xs sm:text-sm text-[#cbd5e1]/80 leading-relaxed mb-4">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.services.map((s) => (
                       <span
                         key={s}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#000c22] text-[#cbd5e1] border border-[rgba(255,253,240,0.06)]"
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#000c22] text-[#cbd5e1] border border-[rgba(255,253,240,0.08)]"
                       >
                         {s}
                       </span>

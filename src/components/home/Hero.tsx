@@ -105,7 +105,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(circle_at_76%_42%,rgba(16,42,113,0.35),transparent_34%),linear-gradient(90deg,#000c22_0%,rgba(0,12,34,0.92)_35%,rgba(0,12,34,0.2)_75%,#000c22_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-48 z-0 pointer-events-none bg-gradient-to-t from-[#000c22] to-transparent" />
 
-      <div className="absolute top-28 right-6 md:right-12 z-10 hidden md:flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.24em] text-[#798fae]">
+      <div className="absolute top-28 right-6 md:right-12 z-10 hidden md:flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-[#798fae]">
         <span className="h-px w-10 bg-[#F5C400]" />
         <span>Live growth system / 01</span>
       </div>
@@ -116,8 +116,8 @@ export default function Hero() {
         {/* Brand Positioning Tag */}
         <div className="hero-anim-item inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-[#001840]/80 backdrop-blur-md rounded-full border border-[rgba(255,253,240,0.14)] mb-7 shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
           <span className="w-2 h-2 rounded-full bg-[#F5C400] animate-pulse" />
-          <span className="text-xs font-mono tracking-widest uppercase text-[#FFFDF0]">
-            Performance marketing · Creator ads · Web
+          <span className="text-xs font-mono tracking-wide text-[#FFFDF0]">
+            Performance Marketing · Creator Ads · Web
           </span>
         </div>
 
@@ -130,7 +130,7 @@ export default function Hero() {
         </h1>
 
         {/* Narrative Progression Ribbon (Organic -> Whitelist -> Performance -> Scale) */}
-        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.14em] text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none whitespace-nowrap">
+        <div className="hero-anim-item flex items-center gap-3 sm:gap-4 text-xs font-mono uppercase tracking-[0.14em] text-[#798fae] mb-8 overflow-x-auto pb-1 scrollbar-none whitespace-nowrap">
           <span className="text-[#F5C400] font-bold">01 Organic Clip</span>
           <span className="text-[rgba(255,253,240,0.2)]">→</span>
           <span className="text-[#FFFDF0]">02 Whitelisted Rights</span>

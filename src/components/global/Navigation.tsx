@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import Link from 'next/link';
-import { PRIMARY_NAV_LINKS } from '@/lib/registry';
+import { PRIMARY_NAV_LINKS, ALL_NAV_LINKS } from '@/lib/registry';
 import { NavigationPrompt } from './NavigationPrompt';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
@@ -112,6 +112,7 @@ export default function Navigation() {
     <>
       <nav
         ref={navRef}
+        aria-label="Primary Navigation"
         className={cn(
           'fixed top-0 left-0 right-0 z-40',
           'flex items-center justify-between',
@@ -126,15 +127,15 @@ export default function Navigation() {
         }}
       >
         {/* Logo / Wordmark */}
-        <Link href="/" className="flex items-center gap-2 group shrink-0">
+        <Link href="/" className="flex items-center gap-2 group shrink-0" aria-label="Clyx Media Home">
           <span className="text-base tracking-[0.25em] font-black uppercase text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors">
             CLYX
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#F5C400]" />
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden xl:flex items-center gap-6">
+        {/* Desktop Links (Streamlined 4 Links) */}
+        <div className="hidden md:flex items-center gap-8">
           {PRIMARY_NAV_LINKS.map((link) => {
             const isActive = link.href === '/'
               ? pathname === '/'
@@ -145,9 +146,9 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-[11px] uppercase tracking-widest transition-all duration-150 py-1 font-medium',
+                  'text-xs font-semibold uppercase tracking-wider transition-all duration-150 py-1',
                   isActive
-                    ? 'text-[#F5C400] font-bold'
+                    ? 'text-[#F5C400]'
                     : 'text-[#cbd5e1]/80 hover:text-[#FFFDF0]'
                 )}
               >
@@ -166,8 +167,8 @@ export default function Navigation() {
             title="Prompt search (⌘K)"
           >
             <span className="text-[#F5C400] font-mono font-bold">&gt;</span>
-            <span className="text-[11px] font-mono text-[#798fae]">Search</span>
-            <kbd className="text-[10px] bg-[#000c22] px-1.5 py-0.5 rounded border border-[rgba(255,253,240,0.1)] text-[#798fae]">
+            <span className="text-xs font-mono text-[#798fae]">Search</span>
+            <kbd className="text-xs font-mono bg-[#000c22] px-1.5 py-0.5 rounded border border-[rgba(255,253,240,0.1)] text-[#798fae]">
               ⌘K
             </kbd>
           </button>
@@ -179,7 +180,7 @@ export default function Navigation() {
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center gap-3 xl:hidden">
+        <div className="flex items-center gap-3 md:hidden">
           <Button href="/contact" variant="primary" size="sm" className="text-xs px-3 py-1">
             Start a project
           </Button>
@@ -224,7 +225,7 @@ export default function Navigation() {
       <div
         ref={mobileMenuRef}
         className={cn(
-          'fixed inset-0 z-30 xl:hidden',
+          'fixed inset-0 z-30 md:hidden',
           'flex flex-col justify-between',
           'px-8 py-24',
           'bg-[#000c22]/98 backdrop-blur-2xl',
@@ -232,7 +233,7 @@ export default function Navigation() {
         )}
       >
         <div className="flex flex-col gap-4">
-          {PRIMARY_NAV_LINKS.map((link) => {
+          {ALL_NAV_LINKS.map((link) => {
             const isActive = link.href === '/'
               ? pathname === '/'
               : pathname === link.href || pathname.startsWith(link.href + '/');
@@ -242,7 +243,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'mobile-link text-2xl font-black uppercase tracking-tight py-1',
+                  'mobile-link text-xl font-bold uppercase tracking-tight py-1',
                   isActive ? 'text-[#F5C400]' : 'text-[#FFFDF0]/80 hover:text-[#FFFDF0]'
                 )}
                 onClick={() => setIsMobileOpen(false)}

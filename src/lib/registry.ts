@@ -1,13 +1,19 @@
 export const PRIMARY_NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Work', href: '/portfolio' },
+  { label: 'About', href: '/about' },
+  { label: 'Case Studies', href: '/case-studies' },
+];
+
+export const ALL_NAV_LINKS = [
+  { label: 'Services', href: '/services' },
+  { label: 'Work', href: '/portfolio' },
+  { label: 'About', href: '/about' },
   { label: 'Case Studies', href: '/case-studies' },
   { label: 'Creators', href: '/creators' },
   { label: 'Blog', href: '/blog' },
   { label: 'Careers', href: '/careers' },
-  { label: 'Contact', href: '/contact' }
+  { label: 'Contact', href: '/contact' },
 ];
 
 export const NAV_PROMPTS = [

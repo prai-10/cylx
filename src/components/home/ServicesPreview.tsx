@@ -30,19 +30,21 @@ export const ServicesPreview: React.FC = () => {
         {/* Interactive Growth Engine Ecosystem (Desktop & Tablet) */}
         <div className="hidden md:grid grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Discipline Selector Column */}
-          <div className="col-span-5 flex flex-col gap-2">
+          <div role="tablist" aria-label="Services disciplines" className="col-span-5 flex flex-col gap-3.5">
             {SERVICES.map((service, index) => {
               const isActive = activeIndex === index;
 
               return (
                 <button
                   key={service.id}
+                  role="tab"
+                  aria-selected={isActive}
                   onClick={() => setActiveIndex(index)}
                   onMouseEnter={() => setActiveIndex(index)}
-                  className={`text-left p-4 lg:p-5 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-between group ${
+                  className={`text-left px-5 py-4 lg:py-4.5 rounded-2xl transition-all duration-200 cursor-pointer flex items-center justify-between group min-h-[56px] ${
                     isActive
-                      ? 'bg-[#001840] border border-[#F5C400]/40 pl-6'
-                      : 'hover:bg-[#001840]/40 border border-transparent text-[#798fae]'
+                      ? 'bg-[#001840] border border-[#F5C400]/60 shadow-lg shadow-[#001840]/50 pl-6'
+                      : 'bg-[#001840]/30 hover:bg-[#001840]/60 border border-[rgba(255,253,240,0.06)] hover:border-[rgba(255,253,240,0.15)] text-[#798fae]'
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -54,8 +56,8 @@ export const ServicesPreview: React.FC = () => {
                       0{index + 1}
                     </span>
                     <span
-                      className={`text-lg lg:text-xl font-bold transition-colors ${
-                        isActive ? 'text-[#FFFDF0]' : 'text-[#cbd5e1]/70 group-hover:text-[#FFFDF0]'
+                      className={`text-base lg:text-lg font-bold transition-colors ${
+                        isActive ? 'text-[#FFFDF0]' : 'text-[#cbd5e1]/80 group-hover:text-[#FFFDF0]'
                       }`}
                     >
                       {service.title}
