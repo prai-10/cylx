@@ -50,21 +50,21 @@ export const ClientResultsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.08)]">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-white border-b border-[#0017B2]/10">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[rgba(255,253,240,0.08)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[#0017B2]/10 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0017B2]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold">
                 05 / Verified Case Studies
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#000000]">
               Client Results &amp; Whitelisting Data
             </h2>
           </div>
-          <Button href="/case-studies" variant="outline" className="shrink-0 border-[rgba(255,253,240,0.15)] hover:border-[#F5C400]">
+          <Button href="/case-studies" variant="outline" className="shrink-0 border-[#0017B2]/20 hover:border-[#0017B2]">
             All Verified Breakdowns →
           </Button>
         </div>
@@ -78,46 +78,46 @@ export const ClientResultsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: idx * 0.12 }}
-              className="p-8 lg:p-10 rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] flex flex-col justify-between hover:border-[#F5C400]/50 transition-all duration-300 group relative"
+              className="p-8 lg:p-10 rounded-3xl bg-[#F8FAFC] border border-[#0017B2]/15 flex flex-col justify-between hover:border-[#0017B2] transition-all duration-300 group relative shadow-sm"
             >
               <div>
-                <div className="flex items-center justify-between mb-8 border-b border-[rgba(255,253,240,0.06)] pb-4">
-                  <span className="text-xs font-mono text-[#F5C400] px-3 py-1 rounded-full bg-[#000c22] border border-[rgba(255,253,240,0.08)]">
+                <div className="flex items-center justify-between mb-8 border-b border-[#0017B2]/10 pb-4">
+                  <span className="text-xs font-mono text-[#0017B2] px-3 py-1 rounded-full bg-white border border-[#0017B2]/15 font-semibold">
                     {study.category}
                   </span>
-                  <span className="text-3xl font-black text-[#F5C400] font-mono tracking-tight">
+                  <span className="text-3xl font-black text-[#0017B2] font-mono tracking-tight">
                     {study.roasLift}
                   </span>
                 </div>
 
-                <h3 className="text-xl lg:text-2xl font-bold text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors mb-3 leading-snug">
+                <h3 className="text-xl lg:text-2xl font-bold text-[#000000] group-hover:text-[#0017B2] transition-colors mb-3 leading-snug">
                   {study.title}
                 </h3>
 
-                <p className="text-sm text-[#cbd5e1]/80 leading-relaxed font-normal mb-8">
+                <p className="text-sm text-[#334155] leading-relaxed font-normal mb-8">
                   {study.summary}
                 </p>
 
                 {/* Evidence Metrics Box */}
-                <div className="p-4 rounded-2xl bg-[#000c22] border border-[rgba(255,253,240,0.06)] mb-8 flex flex-col gap-2.5">
+                <div className="p-4 rounded-2xl bg-white border border-[#0017B2]/10 mb-8 flex flex-col gap-2.5">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-[#798fae] font-mono uppercase text-[10px]">Whitelisted Handle</span>
-                    <span className="font-mono text-[#F5C400] font-bold">{study.creatorHandle}</span>
+                    <span className="text-[#64748B] font-mono uppercase text-[10px]">Whitelisted Handle</span>
+                    <span className="font-mono text-[#0017B2] font-bold">{study.creatorHandle}</span>
                   </div>
-                  <div className="flex items-center justify-between text-xs pt-2 border-t border-[rgba(255,253,240,0.04)]">
-                    <span className="text-[#798fae] font-mono uppercase text-[10px]">Ad Spend Managed</span>
-                    <span className="font-mono text-[#FFFDF0] font-bold">{study.adSpendManaged}</span>
+                  <div className="flex items-center justify-between text-xs pt-2 border-t border-[#0017B2]/10">
+                    <span className="text-[#64748B] font-mono uppercase text-[10px]">Ad Spend Managed</span>
+                    <span className="font-mono text-[#000000] font-bold">{study.adSpendManaged}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[rgba(255,253,240,0.06)] flex items-center justify-between text-xs">
-                <span className="text-[#798fae] font-mono text-[11px]">
+              <div className="pt-4 border-t border-[#0017B2]/10 flex items-center justify-between text-xs">
+                <span className="text-[#64748B] font-mono text-[11px]">
                   {study.client}
                 </span>
                 <Link
                   href={`/case-studies/${study.slug}`}
-                  className="font-mono text-[#F5C400] group-hover:translate-x-1 transition-transform font-bold inline-flex items-center gap-1"
+                  className="font-mono text-[#0017B2] hover:text-[#4A8FE7] group-hover:translate-x-1 transition-transform font-bold inline-flex items-center gap-1"
                 >
                   <span>Strategy Breakdown</span>
                   <span>→</span>

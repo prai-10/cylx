@@ -44,31 +44,31 @@ const FAQ_ITEMS: AccordionItemData[] = [
 
 export const AgencyFAQ: React.FC = () => {
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000818] border-b border-[rgba(255,253,240,0.08)] relative overflow-hidden">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-white border-b border-[#0017B2]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Column — Title & Subtext */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
-                <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#0017B2]" />
+                <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold">
                   06 / Agency Architecture FAQ
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#FFFDF0] mb-6 leading-tight">
+              <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#000000] mb-6 leading-tight">
                 Frequently examined questions.
               </h2>
-              <p className="text-base text-[#cbd5e1] leading-relaxed font-normal mb-8">
+              <p className="text-base text-[#334155] leading-relaxed font-normal mb-8">
                 Everything you need to know about creator whitelisting, performance creative engineering, and how our squad integrates with your growth stack.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#001840]/40 border border-white/10 flex flex-col gap-4">
-              <span className="text-xs font-mono uppercase tracking-wider text-[#798fae]">
+            <div className="p-6 rounded-2xl bg-[#F8FAFC] border border-[#0017B2]/15 flex flex-col gap-4 shadow-sm">
+              <span className="text-xs font-mono uppercase tracking-wider text-[#64748B]">
                 Have a unique challenge?
               </span>
-              <p className="text-sm text-[#FFFDF0]">
+              <p className="text-sm text-[#000000]">
                 Speak directly with a growth director. We answer technical media questions without sales fluff.
               </p>
               <Button href="/contact" variant="primary" size="sm" className="w-fit">

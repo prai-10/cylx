@@ -119,21 +119,21 @@ export default function Navigation() {
           'fixed top-0 left-0 right-0 z-40',
           'flex items-center justify-between',
           'px-5 sm:px-6 lg:px-10 py-3.5 md:py-4',
-          'border-b border-[rgba(255,253,240,0.08)] shadow-[0_14px_40px_rgba(0,0,0,0.16)]',
+          'border-b border-[#0017B2]/10 shadow-[0_4px_25px_rgba(0,0,0,0.06)]',
           'transition-[backdrop-filter,background-color,box-shadow] duration-300'
         )}
         style={{
           backdropFilter: 'blur(20px)',
           WebkitBackdropFilter: 'blur(20px)',
-          backgroundColor: 'rgba(0, 12, 34, 0.72)',
+          backgroundColor: 'rgba(255, 255, 255, 0.88)',
         }}
       >
         {/* Logo / Wordmark */}
         <Link href="/" className="flex items-center gap-2 group shrink-0" aria-label="Clyx Media Home">
-          <span className="text-base tracking-[0.25em] font-black uppercase text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors">
+          <span className="text-base tracking-[0.25em] font-black uppercase text-[#000000] group-hover:text-[#0017B2] transition-colors">
             CLYX
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#F5C400]" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FCD21D]" />
         </Link>
 
         {/* Desktop Links (Streamlined 4 Links) */}
@@ -150,14 +150,14 @@ export default function Navigation() {
                 className={cn(
                   'relative text-xs font-semibold uppercase tracking-wider transition-colors duration-150 px-4 py-2 rounded-full',
                   isActive
-                    ? 'text-[#F5C400]'
-                    : 'text-[#cbd5e1]/80 hover:text-[#FFFDF0]'
+                    ? 'text-[#0017B2]'
+                    : 'text-[#334155] hover:text-[#000000]'
                 )}
               >
                 {isActive && (
                   <motion.div
                     layoutId="desktopNavActivePill"
-                    className="absolute inset-0 bg-[#001840] border border-[#F5C400]/40 rounded-full -z-10"
+                    className="absolute inset-0 bg-[#0017B2]/10 border border-[#0017B2]/20 rounded-full -z-10"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -172,12 +172,12 @@ export default function Navigation() {
           {/* Prompt Trigger */}
           <button
             onClick={() => setIsPromptOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-1.5 bg-[#001840]/60 hover:bg-[#102A71]/50 border border-[rgba(255,253,240,0.12)] hover:border-[#F5C400]/60 rounded-full text-xs text-[#cbd5e1] hover:text-[#FFFDF0] transition-all cursor-pointer"
+            className="flex items-center gap-2 px-3.5 py-1.5 bg-[#F1F5F9] hover:bg-[#E2E8F0] border border-[#0017B2]/15 hover:border-[#0017B2]/40 rounded-full text-xs text-[#334155] hover:text-[#000000] transition-all cursor-pointer"
             title="Prompt search (⌘K)"
           >
-            <span className="text-[#F5C400] font-mono font-bold">&gt;</span>
-            <span className="text-xs font-mono text-[#798fae]">Search</span>
-            <kbd className="text-xs font-mono bg-[#000c22] px-1.5 py-0.5 rounded border border-[rgba(255,253,240,0.1)] text-[#798fae]">
+            <span className="text-[#0017B2] font-mono font-bold">&gt;</span>
+            <span className="text-xs font-mono text-[#64748B]">Search</span>
+            <kbd className="text-xs font-mono bg-white px-1.5 py-0.5 rounded border border-[#0017B2]/15 text-[#64748B]">
               ⌘K
             </kbd>
           </button>
@@ -239,7 +239,7 @@ export default function Navigation() {
           'fixed inset-0 z-30 md:hidden',
           'flex flex-col justify-between',
           'px-8 py-24',
-          'bg-[#000c22]/98 backdrop-blur-2xl',
+          'bg-white/98 backdrop-blur-2xl',
           'opacity-0 pointer-events-none overflow-y-auto'
         )}
       >
@@ -255,7 +255,7 @@ export default function Navigation() {
                 href={link.href}
                 className={cn(
                   'mobile-link text-xl font-bold uppercase tracking-tight py-1',
-                  isActive ? 'text-[#F5C400]' : 'text-[#FFFDF0]/80 hover:text-[#FFFDF0]'
+                  isActive ? 'text-[#0017B2]' : 'text-[#334155] hover:text-[#000000]'
                 )}
                 onClick={() => setIsMobileOpen(false)}
               >

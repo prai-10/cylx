@@ -17,17 +17,17 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const baseStyles = 'group relative inline-flex items-center justify-center overflow-hidden font-semibold tracking-[-0.02em] transition-all duration-300 ease-out cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#F5C400]';
+  const baseStyles = 'group relative inline-flex items-center justify-center overflow-hidden font-semibold tracking-[-0.02em] transition-all duration-300 ease-out cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none text-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0017B2]';
   const sizeStyles = {
     sm: 'min-h-9 px-4 text-xs rounded-full gap-2',
     md: 'min-h-11 px-5 text-sm rounded-full gap-2.5',
     lg: 'min-h-14 px-7 text-base rounded-full gap-3',
   };
   const variantStyles = {
-    primary: 'bg-[#F5C400] text-[#000c22] shadow-[0_12px_30px_rgba(245,196,0,0.14)] hover:-translate-y-0.5 hover:bg-[#FFDC5F] hover:shadow-[0_18px_40px_rgba(245,196,0,0.22)] active:translate-y-0',
-    secondary: 'bg-[#102A71] text-[#FFFDF0] hover:-translate-y-0.5 hover:bg-[#163896] active:translate-y-0',
-    outline: 'border border-white/15 text-[#FFFDF0] bg-white/[0.02] hover:-translate-y-0.5 hover:border-[#F5C400]/70 hover:bg-[#F5C400]/[0.06] hover:text-[#FFDC5F] active:translate-y-0',
-    ghost: 'text-[#FFFDF0] hover:text-[#F5C400] bg-transparent',
+    primary: 'bg-[#FCD21D] text-[#000000] shadow-[0_8px_24px_rgba(252,210,29,0.35)] hover:-translate-y-0.5 hover:bg-[#FEE775] active:translate-y-0 font-bold',
+    secondary: 'bg-[#0017B2] text-[#FFFFFF] shadow-[0_8px_24px_rgba(0,23,178,0.25)] hover:-translate-y-0.5 hover:bg-[#00128C] active:translate-y-0',
+    outline: 'border border-[#0017B2]/25 text-[#0017B2] bg-white hover:-translate-y-0.5 hover:border-[#0017B2] hover:bg-[#4A8FE7]/10 active:translate-y-0',
+    ghost: 'text-[#000000] hover:text-[#0017B2] hover:bg-[#4A8FE7]/10 bg-transparent',
   };
   const styles = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 

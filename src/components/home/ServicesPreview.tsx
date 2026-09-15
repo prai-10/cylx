@@ -14,22 +14,22 @@ export const ServicesPreview: React.FC = () => {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.08)] relative overflow-hidden">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-white border-b border-[#0017B2]/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6 border-b border-[rgba(255,253,240,0.08)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-6 border-b border-[#0017B2]/10 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0017B2]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold">
                 02 / Growth Engine Architecture
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#000000]">
               Six disciplines. One engine.
             </h2>
           </div>
-          <Button href="/services" variant="outline" className="shrink-0 border-[rgba(255,253,240,0.15)] hover:border-[#F5C400]">
+          <Button href="/services" variant="outline" className="shrink-0 border-[#0017B2]/20 hover:border-[#0017B2]">
             Explore All Capabilities →
           </Button>
         </div>
@@ -50,14 +50,14 @@ export const ServicesPreview: React.FC = () => {
                   onMouseEnter={() => setActiveIndex(index)}
                   className={`text-left px-5 py-4 rounded-2xl transition-all duration-300 cursor-pointer flex items-center justify-between group min-h-[58px] relative overflow-hidden ${
                     isActive
-                      ? 'bg-[#001840] border border-[#F5C400]/70 shadow-lg shadow-[#001840]/60 pl-6'
-                      : 'bg-[#001840]/30 hover:bg-[#001840]/60 border border-[rgba(255,253,240,0.06)] hover:border-[rgba(255,253,240,0.18)] text-[#798fae]'
+                      ? 'bg-[#0017B2]/10 border border-[#0017B2] shadow-md pl-6'
+                      : 'bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#0017B2]/10 text-[#64748B]'
                   }`}
                 >
                   {isActive && (
                     <motion.div
                       layoutId="activeTabIndicator"
-                      className="absolute inset-0 bg-[#001840] border border-[#F5C400]/60 rounded-2xl -z-10"
+                      className="absolute inset-0 bg-[#0017B2]/10 border border-[#0017B2] rounded-2xl -z-10"
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -65,14 +65,14 @@ export const ServicesPreview: React.FC = () => {
                   <div className="flex items-center gap-4">
                     <span
                       className={`text-xs font-mono font-bold transition-colors ${
-                        isActive ? 'text-[#F5C400]' : 'text-[#798fae]'
+                        isActive ? 'text-[#0017B2]' : 'text-[#64748B]'
                       }`}
                     >
                       0{index + 1}
                     </span>
                     <span
                       className={`text-base lg:text-lg font-bold transition-colors ${
-                        isActive ? 'text-[#FFFDF0]' : 'text-[#cbd5e1]/80 group-hover:text-[#FFFDF0]'
+                        isActive ? 'text-[#000000]' : 'text-[#334155] group-hover:text-[#000000]'
                       }`}
                     >
                       {service.title}
@@ -81,7 +81,7 @@ export const ServicesPreview: React.FC = () => {
 
                   <span
                     className={`text-xs font-mono transition-transform duration-200 ${
-                      isActive ? 'text-[#F5C400] translate-x-1' : 'opacity-0 group-hover:opacity-100 text-[#798fae]'
+                      isActive ? 'text-[#0017B2] translate-x-1' : 'opacity-0 group-hover:opacity-100 text-[#64748B]'
                     }`}
                   >
                     →
@@ -92,11 +92,11 @@ export const ServicesPreview: React.FC = () => {
           </div>
 
           {/* Central Bento Display Panel */}
-          <div className="col-span-7 bg-[#001840]/50 border border-[rgba(255,253,240,0.1)] rounded-3xl p-8 lg:p-12 flex flex-col justify-between min-h-[460px] relative overflow-hidden backdrop-blur-xl">
-            <BorderBeam size={220} duration={14} colorFrom="#F5C400" colorTo="#102A71" />
+          <div className="col-span-7 bg-[#F8FAFC] border border-[#0017B2]/15 rounded-3xl p-8 lg:p-12 flex flex-col justify-between min-h-[460px] relative overflow-hidden shadow-sm">
+            <BorderBeam size={220} duration={14} colorFrom="#FCD21D" colorTo="#0017B2" />
 
             {/* Ambient Lighting Glow */}
-            <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#102A71]/25 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#4A8FE7]/15 rounded-full blur-3xl pointer-events-none" />
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -108,33 +108,33 @@ export const ServicesPreview: React.FC = () => {
                 className="flex flex-col justify-between h-full"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-8 border-b border-[rgba(255,253,240,0.08)] pb-4">
-                    <span className="text-xs font-mono text-[#F5C400] tracking-widest uppercase">
+                  <div className="flex items-center justify-between mb-8 border-b border-[#0017B2]/10 pb-4">
+                    <span className="text-xs font-mono text-[#0017B2] tracking-widest uppercase font-bold">
                       Active Discipline · 0{activeIndex + 1} / 06
                     </span>
-                    <span className="text-xs font-mono text-[#798fae]">
+                    <span className="text-xs font-mono text-[#64748B]">
                       Integrated Engine Module
                     </span>
                   </div>
 
-                  <h3 className="text-3xl lg:text-4xl font-black text-[#FFFDF0] tracking-tight mb-4">
+                  <h3 className="text-3xl lg:text-4xl font-black text-[#000000] tracking-tight mb-4">
                     {activeService.title}
                   </h3>
 
-                  <p className="text-base lg:text-lg text-[#FFFDF0]/90 leading-relaxed font-normal mb-8">
+                  <p className="text-base lg:text-lg text-[#334155] leading-relaxed font-normal mb-8">
                     {activeService.shortDescription}
                   </p>
 
                   {/* Capabilities Pills */}
                   <div className="flex flex-col gap-2.5 mb-8">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#798fae]">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#64748B]">
                       Core Capabilities
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {activeService.capabilities.slice(0, 5).map((cap, i) => (
                         <span
                           key={i}
-                          className="text-xs font-mono px-3 py-1.5 rounded-lg bg-[#000c22] border border-[rgba(255,253,240,0.1)] text-[#cbd5e1] hover:border-[#F5C400]/40 transition-colors"
+                          className="text-xs font-mono px-3 py-1.5 rounded-lg bg-white border border-[#0017B2]/15 text-[#334155] hover:border-[#0017B2] transition-colors"
                         >
                           {cap}
                         </span>
@@ -143,13 +143,13 @@ export const ServicesPreview: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-[rgba(255,253,240,0.08)] flex items-center justify-between">
-                  <span className="text-xs text-[#798fae] font-mono">
+                <div className="pt-6 border-t border-[#0017B2]/10 flex items-center justify-between">
+                  <span className="text-xs text-[#64748B] font-mono">
                     System Node #{activeService.id}
                   </span>
                   <Link
                     href="/services"
-                    className="text-xs font-mono text-[#F5C400] hover:text-[#FFDC5F] flex items-center gap-1.5 transition-colors font-bold uppercase tracking-wider group"
+                    className="text-xs font-mono text-[#0017B2] hover:text-[#4A8FE7] flex items-center gap-1.5 transition-colors font-bold uppercase tracking-wider group"
                   >
                     <span>Read Full Blueprint</span>
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -170,8 +170,8 @@ export const ServicesPreview: React.FC = () => {
                 key={service.id}
                 className={`rounded-2xl border transition-all ${
                   isExpanded
-                    ? 'bg-[#001840] border-[#F5C400]/60'
-                    : 'bg-[#001840]/30 border-[rgba(255,253,240,0.08)]'
+                    ? 'bg-white border-[#0017B2] shadow-md'
+                    : 'bg-[#F8FAFC] border-[#0017B2]/10'
                 }`}
               >
                 <button
@@ -179,20 +179,20 @@ export const ServicesPreview: React.FC = () => {
                   className="w-full p-6 text-left flex items-center justify-between cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-[#F5C400] font-bold">0{index + 1}</span>
-                    <h3 className="text-lg font-bold text-[#FFFDF0]">{service.title}</h3>
+                    <span className="text-xs font-mono text-[#0017B2] font-bold">0{index + 1}</span>
+                    <h3 className="text-lg font-bold text-[#000000]">{service.title}</h3>
                   </div>
-                  <span className="text-base text-[#F5C400]">{isExpanded ? '−' : '+'}</span>
+                  <span className="text-base text-[#0017B2]">{isExpanded ? '−' : '+'}</span>
                 </button>
 
                 {isExpanded && (
-                  <div className="px-6 pb-6 pt-1 border-t border-[rgba(255,253,240,0.08)] flex flex-col gap-4">
-                    <p className="text-sm text-[#cbd5e1] leading-relaxed">
+                  <div className="px-6 pb-6 pt-1 border-t border-[#0017B2]/10 flex flex-col gap-4">
+                    <p className="text-sm text-[#334155] leading-relaxed">
                       {service.shortDescription}
                     </p>
                     <Link
                       href="/services"
-                      className="text-xs font-mono text-[#F5C400] flex items-center gap-1 mt-2 font-bold"
+                      className="text-xs font-mono text-[#0017B2] flex items-center gap-1 mt-2 font-bold"
                     >
                       <span>Explore full discipline</span>
                       <span>→</span>

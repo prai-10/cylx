@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero';
+import { LogoTicker } from '@/components/ui/LogoTicker';
 import { PerformanceProof } from '@/components/home/PerformanceProof';
 import { ServicesPreview } from '@/components/home/ServicesPreview';
 import { HowItWorks } from '@/components/home/HowItWorks';
@@ -15,7 +16,10 @@ export default function HomePage() {
       {/* 1. HERO */}
       <Hero />
 
-      {/* 2. PERFORMANCE / SOCIAL PROOF */}
+      {/* BRAND LOGO TICKER MARQUEE */}
+      <LogoTicker />
+
+      {/* 2. PERFORMANCE / STATS COUNTERS */}
       <PerformanceProof />
 
       {/* 3. SERVICES */}

@@ -52,18 +52,18 @@ export const BlogPreview: React.FC = () => {
   };
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000818] border-b border-[rgba(255,253,240,0.06)]">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-white border-b border-[#0017B2]/10">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[rgba(255,253,240,0.06)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 border-b border-[#0017B2]/10 pb-8">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400] block mb-3">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold block mb-3">
               Agency Publication &amp; Insights
             </span>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#000000]">
               Notes on running paid + creator together.
             </h2>
           </div>
-          <Button href="/blog" variant="outline" className="shrink-0 border-[rgba(255,253,240,0.15)] hover:border-[#F5C400]">
+          <Button href="/blog" variant="outline" className="shrink-0 border-[#0017B2]/20 hover:border-[#0017B2]">
             All Articles &amp; Frameworks →
           </Button>
         </div>
@@ -77,11 +77,11 @@ export const BlogPreview: React.FC = () => {
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 data-cursor="view"
-                className="p-8 lg:p-10 rounded-3xl bg-[#001840]/35 border border-[rgba(255,253,240,0.07)] hover:border-[#F5C400]/40 transition-all duration-300 flex flex-col justify-between group"
+                className="p-8 lg:p-10 rounded-3xl bg-[#F8FAFC] border border-[#0017B2]/15 hover:border-[#0017B2] transition-all duration-300 flex flex-col justify-between group shadow-sm"
               >
                 <div>
-                  <div className="flex items-center gap-3 text-xs font-mono text-[#798fae] mb-4">
-                    <span className="text-[#F5C400] px-2.5 py-1 rounded bg-[#000c22] border border-[rgba(255,253,240,0.06)]">
+                  <div className="flex items-center gap-3 text-xs font-mono text-[#64748B] mb-4">
+                    <span className="text-[#0017B2] font-semibold px-2.5 py-1 rounded bg-white border border-[#0017B2]/15">
                       {post.category}
                     </span>
                     <span>•</span>
@@ -90,16 +90,16 @@ export const BlogPreview: React.FC = () => {
                     <span>{post.date}</span>
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors mb-4 leading-snug">
+                  <h3 className="text-2xl lg:text-3xl font-black text-[#000000] group-hover:text-[#0017B2] transition-colors mb-4 leading-snug">
                     {post.title}
                   </h3>
 
-                  <p className="text-sm text-[#cbd5e1]/80 leading-relaxed font-normal">
+                  <p className="text-sm text-[#334155] leading-relaxed font-normal">
                     {post.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-6 mt-8 border-t border-[rgba(255,253,240,0.05)] flex items-center justify-between text-xs font-mono text-[#F5C400] font-bold">
+                <div className="pt-6 mt-8 border-t border-[#0017B2]/10 flex items-center justify-between text-xs font-mono text-[#0017B2] font-bold">
                   <span>Read Full Article &amp; Breakdown</span>
                   <span className="group-hover:translate-x-1.5 transition-transform">→</span>
                 </div>
@@ -108,25 +108,25 @@ export const BlogPreview: React.FC = () => {
           </div>
 
           {/* Minimalist Dispatch Box: One email a month. No fluff. */}
-          <div className="lg:col-span-4 p-8 lg:p-10 rounded-3xl bg-[#001840]/60 border border-[rgba(255,253,240,0.1)] flex flex-col justify-between relative overflow-hidden backdrop-blur-md">
-            <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#F5C400]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="lg:col-span-4 p-8 lg:p-10 rounded-3xl bg-[#F8FAFC] border border-[#0017B2]/15 flex flex-col justify-between relative overflow-hidden shadow-sm">
+            <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#4A8FE7]/15 rounded-full blur-3xl pointer-events-none" />
 
             <div>
-              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400] block mb-4">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold block mb-4">
                 Monthly Dispatch
               </span>
-              <h3 className="text-2xl lg:text-3xl font-black text-[#FFFDF0] mb-3">
+              <h3 className="text-2xl lg:text-3xl font-black text-[#000000] mb-3">
                 One email a month. No fluff.
               </h3>
-              <p className="text-sm text-[#cbd5e1]/80 leading-relaxed mb-8">
+              <p className="text-sm text-[#334155] leading-relaxed mb-8">
                 Direct tactical takeaways from our ad accounts: creative hook frameworks, whitelisting benchmark data, and conversion storefront strategies.
               </p>
             </div>
 
             {subscribed ? (
-              <div className="p-4 bg-[#000c22] rounded-2xl border border-[#F5C400]/40 text-center">
-                <span className="text-xs font-bold text-[#F5C400] block mb-1">✓ Subscribed to Monthly Dispatch</span>
-                <p className="text-[11px] text-[#798fae]">You will receive our next monthly performance breakdown.</p>
+              <div className="p-4 bg-white rounded-2xl border border-[#0017B2]/40 text-center">
+                <span className="text-xs font-bold text-[#0017B2] block mb-1">✓ Subscribed to Monthly Dispatch</span>
+                <p className="text-[11px] text-[#64748B]">You will receive our next monthly performance breakdown.</p>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3.5">
@@ -136,12 +136,12 @@ export const BlogPreview: React.FC = () => {
                   placeholder="name@brand.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3.5 bg-[#000c22] text-[#FFFDF0] placeholder-[#798fae] rounded-xl text-xs font-mono border border-[rgba(255,253,240,0.12)] focus:border-[#F5C400] focus:outline-none transition-colors"
+                  className="w-full px-4 py-3.5 bg-white text-[#000000] placeholder-[#64748B] rounded-xl text-xs font-mono border border-[#0017B2]/20 focus:border-[#0017B2] focus:outline-none transition-colors shadow-sm"
                 />
                 <Button type="submit" variant="primary" size="md" className="w-full justify-center">
                   Subscribe to Notes →
                 </Button>
-                <span className="text-[10px] text-[#798fae] text-center font-mono">
+                <span className="text-[10px] text-[#64748B] text-center font-mono">
                   Zero spam. Unsubscribe anytime in 1 click.
                 </span>
               </form>

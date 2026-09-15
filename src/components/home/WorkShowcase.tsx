@@ -58,22 +58,22 @@ export const WorkShowcase: React.FC = () => {
     : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-[#000c22] border-b border-[rgba(255,253,240,0.08)] relative">
+    <section className="py-28 md:py-36 px-6 md:px-12 lg:px-16 bg-white border-b border-[#0017B2]/10 relative">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[rgba(255,253,240,0.08)] pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b border-[#0017B2]/10 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#F5C400]" />
-              <span className="text-xs font-mono uppercase tracking-widest text-[#F5C400]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#0017B2]" />
+              <span className="text-xs font-mono uppercase tracking-widest text-[#0017B2] font-bold">
                 04 / Performance Portfolio
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#FFFDF0]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#000000]">
               Campaigns, not concepts.
             </h2>
           </div>
-          <Button href="/portfolio" variant="outline" className="shrink-0 border-[rgba(255,253,240,0.15)] hover:border-[#F5C400]">
+          <Button href="/portfolio" variant="outline" className="shrink-0 border-[#0017B2]/20 hover:border-[#0017B2]">
             View Complete Archive →
           </Button>
         </div>
@@ -90,14 +90,14 @@ export const WorkShowcase: React.FC = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`relative px-4.5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-colors cursor-pointer flex items-center justify-center min-h-[40px] ${
                   isSelected
-                    ? 'text-[#000c22]'
-                    : 'text-[#cbd5e1] hover:text-[#FFFDF0] bg-[#001840]/60 border border-[rgba(255,253,240,0.1)] hover:border-[#F5C400]/40'
+                    ? 'text-[#000000]'
+                    : 'text-[#64748B] hover:text-[#000000] bg-[#F1F5F9] border border-[#0017B2]/10 hover:border-[#0017B2]/30'
                 }`}
               >
                 {isSelected && (
                   <motion.div
                     layoutId="activeCategoryPill"
-                    className="absolute inset-0 bg-[#F5C400] rounded-full shadow-md shadow-[#F5C400]/25 -z-0"
+                    className="absolute inset-0 bg-[#FCD21D] rounded-full shadow-md shadow-[#FCD21D]/30 -z-0"
                     transition={{ type: 'spring', stiffness: 350, damping: 28 }}
                   />
                 )}
@@ -131,31 +131,31 @@ export const WorkShowcase: React.FC = () => {
                   <Link
                     href={`/portfolio/${project.slug}`}
                     data-cursor="view"
-                    className="group block rounded-3xl bg-[#001840]/40 border border-[rgba(255,253,240,0.08)] overflow-hidden hover:border-[#F5C400]/60 transition-all duration-300 h-full flex flex-col justify-between"
+                    className="group block rounded-3xl bg-[#F8FAFC] border border-[#0017B2]/15 overflow-hidden hover:border-[#0017B2] transition-all duration-300 h-full flex flex-col justify-between shadow-sm"
                   >
                     {/* Visual Frame */}
-                    <div className="relative aspect-[16/10] w-full bg-[#001840]/90 flex flex-col justify-between p-6 sm:p-8 overflow-hidden group-hover:bg-[#00225c]/80 transition-colors">
+                    <div className="relative aspect-[16/10] w-full bg-[#0017B2]/5 flex flex-col justify-between p-6 sm:p-8 overflow-hidden group-hover:bg-[#4A8FE7]/10 transition-colors">
                       <div className="flex items-center justify-between z-10">
-                        <span className="text-xs font-mono font-semibold text-[#F5C400] px-3 py-1.5 rounded-full bg-[#000c22]/90 border border-[rgba(255,253,240,0.1)]">
+                        <span className="text-xs font-mono font-semibold text-[#0017B2] px-3 py-1.5 rounded-full bg-white border border-[#0017B2]/15 shadow-sm">
                           {project.category}
                         </span>
-                        <span className="text-xs font-mono text-[#cbd5e1]/80 bg-[#000c22]/70 px-2.5 py-1 rounded-md">
+                        <span className="text-xs font-mono text-[#64748B] bg-white px-2.5 py-1 rounded-md border border-[#0017B2]/10">
                           {project.year}
                         </span>
                       </div>
 
                       <div className="z-10 my-auto py-4">
-                        <span className="text-xs uppercase tracking-widest text-[#F5C400] font-mono block mb-1.5 font-bold">
+                        <span className="text-xs uppercase tracking-widest text-[#0017B2] font-mono block mb-1.5 font-bold">
                           {project.client}
                         </span>
-                        <h3 className="text-2xl sm:text-3xl font-black text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors leading-tight">
+                        <h3 className="text-2xl sm:text-3xl font-black text-[#000000] group-hover:text-[#0017B2] transition-colors leading-tight">
                           {project.title}
                         </h3>
                       </div>
 
-                      <div className="flex items-center justify-between text-xs text-[#cbd5e1] z-10 border-t border-[rgba(255,253,240,0.08)] pt-3.5">
-                        <span className="font-mono text-xs text-[#798fae]">{project.services[0]}</span>
-                        <span className="text-[#F5C400] group-hover:translate-x-1.5 transition-transform font-bold font-mono inline-flex items-center gap-1">
+                      <div className="flex items-center justify-between text-xs text-[#64748B] z-10 border-t border-[#0017B2]/10 pt-3.5">
+                        <span className="font-mono text-xs text-[#64748B]">{project.services[0]}</span>
+                        <span className="text-[#0017B2] group-hover:translate-x-1.5 transition-transform font-bold font-mono inline-flex items-center gap-1">
                           <span>View Case Study</span>
                           <span aria-hidden="true">→</span>
                         </span>
@@ -163,15 +163,15 @@ export const WorkShowcase: React.FC = () => {
                     </div>
 
                     {/* Structured Meta Info */}
-                    <div className="p-6 lg:p-7 border-t border-[rgba(255,253,240,0.06)] bg-[#000c22]/50">
-                      <p className="text-xs sm:text-sm text-[#cbd5e1]/80 leading-relaxed mb-4">
+                    <div className="p-6 lg:p-7 border-t border-[#0017B2]/10 bg-white">
+                      <p className="text-xs sm:text-sm text-[#334155] leading-relaxed mb-4">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {project.services.map((s) => (
                           <span
                             key={s}
-                            className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#000c22] text-[#cbd5e1] border border-[rgba(255,253,240,0.08)]"
+                            className="text-xs font-mono px-2.5 py-1 rounded-md bg-[#F1F5F9] text-[#334155] border border-[#0017B2]/10"
                           >
                             {s}
                           </span>

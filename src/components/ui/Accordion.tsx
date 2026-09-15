@@ -34,7 +34,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className={`divide-y divide-white/10 border-y border-white/10 ${className}`}>
+    <div className={`divide-y divide-[#0017B2]/10 border-y border-[#0017B2]/10 ${className}`}>
       {items.map((item, idx) => {
         const isOpen = openIds.includes(item.id);
 
@@ -46,17 +46,17 @@ export const Accordion: React.FC<AccordionProps> = ({
               className="w-full flex items-center justify-between text-left gap-6 cursor-pointer"
             >
               <div className="flex items-center gap-4 sm:gap-6">
-                <span className="text-xs font-mono text-[#798fae] group-hover:text-[#F5C400] transition-colors">
+                <span className="text-xs font-mono text-[#64748B] group-hover:text-[#0017B2] transition-colors">
                   0{idx + 1}
                 </span>
-                <span className="text-lg sm:text-2xl font-bold text-[#FFFDF0] group-hover:text-[#F5C400] transition-colors tracking-tight">
+                <span className="text-lg sm:text-2xl font-bold text-[#000000] group-hover:text-[#0017B2] transition-colors tracking-tight">
                   {item.question}
                 </span>
               </div>
               <motion.span
                 animate={{ rotate: isOpen ? 45 : 0 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="w-8 h-8 rounded-full border border-white/15 flex items-center justify-center text-base text-[#F5C400] shrink-0 group-hover:border-[#F5C400]/60 transition-colors"
+                className="w-8 h-8 rounded-full border border-[#0017B2]/20 flex items-center justify-center text-base text-[#0017B2] shrink-0 group-hover:border-[#0017B2] transition-colors"
               >
                 +
               </motion.span>
@@ -86,11 +86,11 @@ export const Accordion: React.FC<AccordionProps> = ({
                   className="overflow-hidden"
                 >
                   <div className="pt-5 pl-8 sm:pl-12 max-w-3xl">
-                    <p className="text-sm sm:text-base text-[#cbd5e1] leading-relaxed font-normal">
+                    <p className="text-sm sm:text-base text-[#334155] leading-relaxed font-normal">
                       {item.answer}
                     </p>
                     {item.tag && (
-                      <span className="inline-block mt-4 text-[10px] font-mono uppercase tracking-widest text-[#F5C400] px-2.5 py-1 rounded bg-[#001840] border border-[rgba(255,253,240,0.08)]">
+                      <span className="inline-block mt-4 text-[10px] font-mono uppercase tracking-widest text-[#0017B2] px-2.5 py-1 rounded bg-[#4A8FE7]/15 border border-[#0017B2]/15 font-semibold">
                         {item.tag}
                       </span>
                     )}
